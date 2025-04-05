@@ -1,3 +1,3 @@
 export type Cart = {
-    cart_id: string;
+    movie_id: string;
 }; 
