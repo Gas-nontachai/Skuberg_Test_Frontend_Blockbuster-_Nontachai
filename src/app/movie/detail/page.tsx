@@ -22,8 +22,8 @@ const DetailPage = () => {
         try {
             const data = await getMovieByIDAPI(movie_id || "");
             setMovie(data);
-        } catch (error) {
-            console.error("Failed to fetch movie:", error);
+        } catch (err) {
+            console.error("Failed to fetch movie:", err);
         } finally {
             setLoading(false);
         }

@@ -1,6 +1,6 @@
 import { apiKey } from '@/utils/connect';
 import { generatePrice } from '@/utils/generator-price';
-import { Movie, Genre } from '@/misc/types';
+import { Movie, MovieAPI } from '@/misc/types';
 
 const getMovieByAPI = async (page: number = 1, query: string = ''): Promise<Movie[]> => {
     const encodedQuery = encodeURIComponent(query);
@@ -12,7 +12,7 @@ const getMovieByAPI = async (page: number = 1, query: string = ''): Promise<Movi
         const response = await fetch(endpoint);
         const data = await response.json();
         const movies: Movie[] = await Promise.all(
-            data.results.map(async (d: any): Promise<Movie> => ({
+            data.results.map(async (d: MovieAPI): Promise<Movie> => ({
                 movie_id: d.id,
                 title: d.title,
                 overview: d.overview,
@@ -26,9 +26,9 @@ const getMovieByAPI = async (page: number = 1, query: string = ''): Promise<Movi
             }))
         );
         return movies;
-    } catch (error) {
-        console.error('Error fetching movies:', error);
-        throw error;
+    } catch (err) {
+        console.error('Error fetching movies:', err);
+        throw err;
     }
 };
 
@@ -52,22 +52,9 @@ const getMovieByIDAPI = async (id: string): Promise<Movie> => {
         };
 
         return movie;
-    } catch (error) {
-        console.error('Error fetching movie by ID:', error);
-        throw error;
-    }
-};
-
-const getMovieCategory = async (): Promise<Genre[]> => {
-    const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`;
-
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        return data.genres;
-    } catch (error) {
-        console.error('Error fetching genres:', error);
-        throw error;
+    } catch (err) {
+        console.error('Error fetching movie by ID:', err);
+        throw err;
     }
 };
 
@@ -75,6 +62,5 @@ export default function useMovie() {
     return {
         getMovieByAPI,
         getMovieByIDAPI,
-        getMovieCategory,
     };
 }

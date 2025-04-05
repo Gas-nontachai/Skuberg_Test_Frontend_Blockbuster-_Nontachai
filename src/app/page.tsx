@@ -24,8 +24,8 @@ const HomePage = () => {
     try {
       const response = await getMovieByAPI(currentPage, searchQuery);
       setMovies(response);
-    } catch (error) {
-      console.error('Error fetching movie data:', error);
+    } catch (err) {
+      console.error('Error fetching movie data:', err);
     } finally {
       setLoading(false);
     }

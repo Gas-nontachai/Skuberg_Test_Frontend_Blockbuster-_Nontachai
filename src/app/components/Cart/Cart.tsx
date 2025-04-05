@@ -38,7 +38,7 @@ const CartDetail = ({ onComplete }: { onComplete: () => void }) => {
             } else {
                 setDiscount(0);
             }
-        } catch (error) {
+        } catch (err) {
             setError('There was an error fetching the cart details. Please try again later.');
         } finally {
             setLoading(false);
