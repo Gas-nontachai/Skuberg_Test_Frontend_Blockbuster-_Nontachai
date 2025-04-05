@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image'
 import { useAPI } from '@/hook/hooks';
 import { Movie } from '@/misc/types';
 import { IconButton, Button, Breadcrumbs, Chip } from '@mui/material';
@@ -147,9 +148,11 @@ const CartDetailPage = () => {
                         {cartItems.length > 0 ? (
                             cartItems.map((item: Movie, index: number) => (
                                 <div key={index} className="flex items-center justify-between p-4 bg-gray-800 rounded-lg shadow-md text-xs">
-                                    <img
+                                    <Image
                                         src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
                                         alt={item.title}
+                                        width={200}
+                                        height={220}
                                         className="w-16 h-22 object-cover rounded mr-4"
                                     />
                                     <div className="flex-grow">

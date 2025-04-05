@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image'
 import Link from 'next/link';
 import { ShoppingCart, Delete } from '@mui/icons-material';
 import { useAPI } from '@/hook/hooks';
@@ -133,9 +134,11 @@ const CartDetail = ({ onComplete }: { onComplete: () => void }) => {
                 {cartItems.length > 0 ? (
                     cartItems.map((item: Movie, index: number) => (
                         <div key={index} className="flex items-center justify-between p-2 bg-gray-800 rounded shadow text-xs">
-                            <img
+                            <Image
                                 src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
                                 alt={item.title}
+                                width={200}  
+                                height={140}  
                                 className="w-10 h-14 object-cover rounded mr-2"
                             />
                             <div className="flex-grow">

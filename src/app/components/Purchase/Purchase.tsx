@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Typography } from '@mui/material';
 import { useQRCode } from 'next-qrcode';
 import { Cancel, CheckCircle } from '@mui/icons-material';
-import Swal from 'sweetalert2';
 
 const PurchaseDialog = ({ price, onClose, onComplete }: { price: number, onClose: () => void, onComplete: () => void }) => {
     const [timer, setTimer] = useState(60);

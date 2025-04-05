@@ -1,6 +1,7 @@
 "use client";
 
 import { useSearchParams } from 'next/navigation';
+import Image from 'next/image'
 import React, { useEffect, useState } from 'react';
 import { Breadcrumbs, Chip, Button } from '@mui/material';
 import { Home } from '@mui/icons-material';
@@ -77,9 +78,11 @@ const DetailPage = () => {
                 <h1 className="text-5xl font-extrabold text-yellow-500 mb-6 text-center">
                     {movie.title}
                 </h1>
-                <img
+                <Image
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                     alt={movie.title}
+                    width={500}
+                    height={750}
                     className="w-6/12 max-w-lg mx-auto rounded-lg shadow-lg border-4 border-yellow-500 mb-6"
                 />
                 <p className="text-lg text-gray-300 mb-6 leading-relaxed">

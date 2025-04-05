@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image'
 import { TextField, Button, CircularProgress, Badge, IconButton, Pagination } from '@mui/material';
 import { Search, AddShoppingCart, ShoppingCart } from '@mui/icons-material';
 import { useAPI } from '@/hook/hooks';
@@ -174,9 +175,11 @@ const HomePage = () => {
                     className="bg-gray-800 rounded-xl shadow-md overflow-hidden transition-all transform hover:-translate-y-1 hover:scale-105 hover:bg-gray-700 hover:shadow-xl duration-300"
                   >
                     <Link href={`/movie/detail?movie_id=${movie.movie_id}`}>
-                      <img
+                      <Image
                         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                         alt={movie.title}
+                        width={500}
+                        height={288}
                         className="w-full h-72 object-cover"
                       />
                     </Link>
