@@ -91,12 +91,13 @@ const HomePage = () => {
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white font-sans">
       <div className='w-8/12 mx-auto'>
         <header className="text-center py-6 relative">
-          <h1 className="text-5xl font-extrabold text-yellow-500 drop-shadow-lg uppercase">
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-yellow-500 drop-shadow-lg uppercase w-full">
             🎬 Blockbuster Cinema
           </h1>
-          <p className="text-gray-300 mt-2 text-xl">Indulge in exciting movies!</p>
+          <p className="text-sm sm:text-lg text-gray-300 mt-2">Indulge in exciting movies!</p>
+
           <div
-            className="absolute right-4 top-4 h-full min-w-50"
+            className="absolute -right-10 top-4 sm:right-2 sm:top-2 md:right-4 md:top-4 lg:right-6 lg:top-6"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
@@ -107,15 +108,16 @@ const HomePage = () => {
                 </Badge>
               </IconButton>
             </Link>
+
             {isHovered && (
-              <div className="absolute right-2 top-16 z-10 w-80">
+              <div className="absolute right-2 top-16 z-10 w-80 sm:w-72 md:w-80 lg:w-96">
                 <CartDetail onComplete={() => { fetchCart(); }} />
               </div>
             )}
           </div>
         </header>
 
-        <div className="max-w-2xl mx-auto flex items-center gap-4 px-4 mb-8">
+        <div className="max-w-full sm:max-w-md md:max-w-2xl mx-auto flex flex-col sm:flex-row items-center gap-4 px-4 mb-8">
           <TextField
             label="ค้นหาหนัง"
             variant="outlined"
@@ -136,15 +138,17 @@ const HomePage = () => {
             onClick={handleSearch}
             startIcon={<Search />}
             sx={{ fontWeight: 'bold' }}
+            className="w-full sm:w-auto"
           >
             ค้นหา
           </Button>
         </div>
 
-        <div className="bg-gray-800 p-4 rounded-lg shadow-lg mb-8 mx-auto max-w-2xl flex justify-center items-center gap-4">
+        <div className="bg-gray-800 rounded-lg shadow-lg mb-8 flex justify-center items-center gap-4 p-1 md:p-2 lg:p-3 xl:p-4 w-full">
           <Pagination
             count={99}
             page={currentPage}
+            siblingCount={3}
             variant="outlined"
             shape="rounded"
             onChange={(event, value) => handlePagination(value)}
@@ -169,7 +173,7 @@ const HomePage = () => {
               <CircularProgress color="secondary" />
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-6 pb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:lg:grid-cols-4  gap-8 px-6 pb-12">
               {movies.length > 0 ? (
                 movies.map((movie: Movie) => (
                   <div

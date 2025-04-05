@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image'
 import { useAPI } from '@/hook/hooks';
 import { Movie } from '@/misc/types';
-import { IconButton, Button, Breadcrumbs, Chip } from '@mui/material';
+import { IconButton, Button, Breadcrumbs, Chip, Typography } from '@mui/material';
 import { Home, Delete } from '@mui/icons-material';
 import PurchaseDialog from '@/app/components/Purchase/Purchase';
 import Swal from 'sweetalert2';
@@ -148,21 +148,27 @@ const CartDetailPage = () => {
                     <div className="space-y-4">
                         {cartItems.length > 0 ? (
                             cartItems.map((item: Movie, index: number) => (
-                                <div key={index} className="flex items-center justify-between p-4 bg-gray-800 rounded-lg shadow-md text-xs">
+                                <div
+                                    key={index}
+                                    className="flex flex-col sm:flex-row items-center justify-between p-4 bg-gray-800 rounded-lg shadow-md text-xs"
+                                >
                                     <Image
                                         src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
                                         alt={item.title}
                                         width={200}
                                         height={220}
-                                        className="w-16 h-22 object-cover rounded mr-4"
+                                        className="w-16 h-22 object-cover rounded mr-4 sm:w-24 sm:h-28 md:w-32 md:h-36"
                                     />
                                     <div className="flex-grow">
-                                        <h4 className="font-semibold text-lg truncate">{item.title}</h4>
-                                    </div>
+                                        <Typography
+                                            className="font-semibold text-sm md:text-xl truncate"
+                                        >
+                                            {item.title}
+                                        </Typography>                                    </div>
                                     <span className="text-yellow-300 font-semibold">${item.price}</span>
                                     <IconButton
                                         onClick={() => removeMovie(item.movie_id)}
-                                        className="ml-4"
+                                        className="ml-4 mt-2 sm:mt-0"
                                         color="error"
                                     >
                                         <Delete />
