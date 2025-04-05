@@ -1,14 +1,14 @@
 "use client";
 
 import { useSearchParams } from 'next/navigation';
-import Image from 'next/image'
-import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import React, { useEffect, useState, Suspense } from 'react';
 import { Breadcrumbs, Chip, Button } from '@mui/material';
 import { Home } from '@mui/icons-material';
 import { Movie } from '@/misc/types';
 import { useAPI } from '@/hook/hooks';
 
-const DetailPage = () => {
+const DetailPageContent = () => {
     const { getMovieByIDAPI } = useAPI();
     const searchParams = useSearchParams();
 
@@ -118,6 +118,14 @@ const DetailPage = () => {
                 )}
             </div>
         </div>
+    );
+};
+
+const DetailPage = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <DetailPageContent />
+        </Suspense>
     );
 };
 
