@@ -77,7 +77,9 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    localStorage.getItem('currentPage') && setCurrentPage(Number(localStorage.getItem('currentPage')));
+    if (localStorage.getItem('currentPage')) {
+      setCurrentPage(Number(localStorage.getItem('currentPage')));
+    }
     fetchMovies();
   }, [fetchMovies]);
 
