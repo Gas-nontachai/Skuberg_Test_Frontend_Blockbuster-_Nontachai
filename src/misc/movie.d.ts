@@ -4,7 +4,6 @@ export type Movie = {
     overview: string;
     poster_path: string;
     backdrop_path: string;
-    genre_ids: string;
     adult: boolean;
     release_date: date | string;
     vote_average: number;
@@ -17,7 +16,6 @@ export type MovieAPI = {
     overview: string;
     poster_path: string;
     backdrop_path: string;
-    genre_ids: string;
     adult: boolean;
     release_date: date | string;
     vote_average: number;

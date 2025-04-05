@@ -59,7 +59,7 @@ const DetailPage = () => {
             <div className="max-w-4xl mx-auto">
                 <Breadcrumbs aria-label="breadcrumb" className="text-white mb-6" color="warning">
                     <Chip
-                        onClick={() => window.location.href = "/"}
+                        onClick={() => { window.location.href = "/" }}
                         component="a"
                         href="#"
                         label="Home"

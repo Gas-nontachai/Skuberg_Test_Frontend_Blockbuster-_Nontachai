@@ -42,6 +42,7 @@ const CartDetailPage = () => {
                 setDiscount(0);
             }
         } catch (err) {
+            console.error(err);
             setError('There was an error fetching the cart details. Please try again later.');
         } finally {
             setLoading(false);
@@ -126,7 +127,7 @@ const CartDetailPage = () => {
             <div className='w-6/12 mx-auto'>
                 <Breadcrumbs aria-label="breadcrumb" className="text-white mb-6" color="warning">
                     <Chip
-                        onClick={() => window.location.href = "/"}
+                        onClick={() => { window.location.href = "/" }}
                         component="a"
                         href="#"
                         label="Home"

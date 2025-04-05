@@ -39,6 +39,7 @@ const CartDetail = ({ onComplete }: { onComplete: () => void }) => {
                 setDiscount(0);
             }
         } catch (err) {
+            console.error(err);
             setError('There was an error fetching the cart details. Please try again later.');
         } finally {
             setLoading(false);
@@ -137,8 +138,8 @@ const CartDetail = ({ onComplete }: { onComplete: () => void }) => {
                             <Image
                                 src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
                                 alt={item.title}
-                                width={200}  
-                                height={140}  
+                                width={200}
+                                height={140}
                                 className="w-10 h-14 object-cover rounded mr-2"
                             />
                             <div className="flex-grow">
